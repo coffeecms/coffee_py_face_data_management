@@ -1,8 +1,8 @@
 # Face ID Management System - https://blog.lowlevelforest.com/
- 
+
 ## Overview
 
-This system manages Face IDs for workers, allowing you to load face data from images, search for the closest face data based on a base64 image, and handle concurrent searches. It supports both CPU and GPU processing modes.
+This system manages Face IDs for workers, allowing you to load face data from images, search for the closest face data based on a base64 image, and handle concurrent searches. It supports both CPU and GPU processing modes for enhanced accuracy and speed.
 
 ## Features
 
@@ -17,6 +17,8 @@ This system manages Face IDs for workers, allowing you to load face data from im
 - OpenCV with CUDA (for GPU mode)
 - NumPy
 - scikit-learn
+- facenet-pytorch
+- faiss-cpu or faiss-gpu
 - aiohttp (for asynchronous requests)
 
 ## Installation
@@ -40,10 +42,16 @@ This system manages Face IDs for workers, allowing you to load face data from im
     Install required Python libraries:
 
     ```bash
-    pip install opencv-python-headless numpy scikit-learn aiohttp
+    pip install opencv-python-headless numpy scikit-learn facenet-pytorch faiss-cpu aiohttp
     ```
 
-    To use GPU processing mode, ensure OpenCV is built with CUDA support. You might need to build OpenCV from source or find a pre-built version with CUDA support.
+    For GPU support in Faiss, install `faiss-gpu` instead:
+
+    ```bash
+    pip install faiss-gpu
+    ```
+
+    To use GPU processing mode in OpenCV, ensure OpenCV is built with CUDA support.
 
 ## Configuration
 
@@ -65,7 +73,7 @@ This system manages Face IDs for workers, allowing you to load face data from im
     duplicates = load_face_id_from_images(directory, data, PROCESSING_MODE)
     ```
 
-    This function will process all images in the specified directory and add face data to `data.json`. It also checks for duplicate `user_id`s.
+    This function will process all images in the specified directory, add face data to `data.json`, and check for duplicate `user_id`s.
 
 2. **Searching for Face Data:**
 

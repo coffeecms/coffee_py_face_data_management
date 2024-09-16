@@ -1,5 +1,5 @@
-# Face ID Management System
-
+# Face ID Management System - https://blog.lowlevelforest.com/
+ 
 ## Overview
 
 This system manages Face IDs for workers, allowing you to load face data from images, search for the closest face data based on a base64 image, and handle concurrent searches. It supports both CPU and GPU processing modes.
